@@ -1,4 +1,4 @@
-const http = require('../frontend/node_modules/http');
+import * from 'http'
 const app = require('./app');
 
 app.set('port', process.env.PORT || 3000);
