@@ -1,8 +1,7 @@
 const express = require("express");
-const bodyParser = require("body-parser");
-const cors = require("cors");
 const dbConfig = require("./db.config");
-const db = require("../backend/models");
+const mongoose = require('mongoose');
+const bodyParser = require('body-parser');
 
 const app = express();
 
@@ -10,7 +9,7 @@ var corsOptions = {
   origin: "http://localhost:3000"
 };
 
-db.mongoose
+mongoose
   .connect(`mongodb://${dbConfig.HOST}:${dbConfig.PORT}/${dbConfig.DB}`, {
     useNewUrlParser: true,
     useUnifiedTopology: true
@@ -22,16 +21,15 @@ db.mongoose
     console.error("C'est pas encore bon MongoDB", err);
     process.exit();
   });
-app.use(cors(corsOptions));
 
-app.use(bodyParser.json());
+ //var routes = require('./routes/index');
+var user = require('./routes/userRoutes');
+
+app.use(bodyParser.json()); // support json encoded bodies
 app.use(bodyParser.urlencoded({ extended: true }));
-require('../backend/models/userModel');
 
-
-
-// simple route
-require('../backend/routes/userRouter')(app);
+// app.use('/', routes);
+app.use('/user', user);
 
 // set port, listen for requests
 const PORT = process.env.PORT || 3000;
