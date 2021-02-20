@@ -8,8 +8,8 @@ import CreateAccountScreen from './src/screens/CreateAccountScreen';
 import SplashScreen from './src/screens/SplashScreen';
 import LoginScreen from './src/screens/LoginScreen';
 import RegisterScreen from './src/screens/RegisterScreen';
-import DrawerNavigationRoutes from './src/screens/DrawerNavigationRoutes';
-import Auth from './src/components/Auth';
+import DrawerNavigationRoutes from './src/components/Nav/DrawerNavigationRoutes';
+import Auth from './src/components/Nav/Auth';
 
 const Stack = createStackNavigator();
 

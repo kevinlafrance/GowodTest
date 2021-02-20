@@ -90,12 +90,12 @@ const LoginScreen = ({navigation}) => {
   const [userEmail, setUserEmail] = useState('');
   const [userPassword, setUserPassword] = useState('');
   const [loading, setLoading] = useState(false);
-  const [errortext, setErrortext] = useState('');
+  const [errorText, setErrorText] = useState('');
 
   const passwordInputRef = createRef();
 
   const handleSubmitPress = () => {
-    setErrortext('');
+    setErrorText('');
     if (!userEmail) {
       alert('Please fill Email');
       return;
@@ -105,11 +105,11 @@ const LoginScreen = ({navigation}) => {
       return;
     }
     setLoading(true);
-    let dataToSend = {email: userEmail, password: userPassword};
+    let userInfo = {email: userEmail, password: userPassword};
     let formBody = [];
-    for (let key in dataToSend) {
+    for (let key in userInfo) {
       let encodedKey = encodeURIComponent(key);
-      let encodedValue = encodeURIComponent(dataToSend[key]);
+      let encodedValue = encodeURIComponent(userInfo[key]);
       formBody.push(encodedKey + '=' + encodedValue);
     }
     formBody = formBody.join('&');
@@ -134,7 +134,7 @@ const LoginScreen = ({navigation}) => {
         console.log(responseJson.data.email);
         navigation.replace('DrawerNavigationRoutes');
       } else {
-        setErrortext(responseJson.msg);
+        setErrorText(responseJson.msg);
         console.log('Please check your email id or password');
       }
     })
@@ -192,9 +192,9 @@ const LoginScreen = ({navigation}) => {
               returnKeyType="next"
               />
               </FormSection>
-              {errortext != '' ? (
+              {errorText != '' ? (
               <ErrorText>
-                {errortext}
+                {errorText}
               </ErrorText>
             ) : null}
               <LoginButton

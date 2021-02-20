@@ -1,9 +1,12 @@
-const express = require('express');
-const router = express.Router();
-const UserController = require('../controllers/userController');
+const { signUp } = require("../middlewares");
+const Usercontroller = require("../controllers/userControllers");
 
+module.exports = function(app) {
 
-router.post('/signup', UserController.signup);
-router.post('/login', UserController.login);
+  app.post(
+    "/api/auth/signup",
+    Usercontroller.signup
+  );
 
-module.exports = router;
+  app.post("/api/auth/signin", Usercontroller.signin);
+};

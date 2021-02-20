@@ -1,21 +1,14 @@
 import 'react-native-gesture-handler';
-
-// Import React and Component
 import React from 'react';
-
-// Import Navigators from React Navigation
-import {NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
-import SplashScreen from '../screens/SplashScreen';
-import LoginScreen from '../screens/LoginScreen';
-import RegisterScreen from '../screens/RegisterScreen';
-import DrawerNavigationRoutes from '../screens/DrawerNavigationRoutes';
+import LoginScreen from '../../screens/LoginScreen';
+import RegisterScreen from '../../screens/RegisterScreen';
 
 const Stack = createStackNavigator();
 
 
 const Auth = () => {
-    // Stack Navigator for Login and Sign up Screen
+    // Nav pour toute la partie Authentification
     return (
       <Stack.Navigator initialRouteName="LoginScreen">
         <Stack.Screen
@@ -26,14 +19,16 @@ const Auth = () => {
         <Stack.Screen
           name="RegisterScreen"
           component={RegisterScreen}
+          // Pour chaque Screen dans la nav rajouter ce style
+          // TODO: Refacto avec styled component
           options={{
-            title: 'Register', //Set Header Title
+            title: "S'inscrire", //Title de la nav page inscription
             headerStyle: {
-              backgroundColor: '#307ecc', //Set Header color
+              backgroundColor: '#845ded', // couleur de fond
             },
-            headerTintColor: '#fff', //Set Header text color
+            headerTintColor: '#fff', // couleur de text
             headerTitleStyle: {
-              fontWeight: 'bold', //Set Header text style
+              fontWeight: 'bold', // style text 
             },
           }}
         />
