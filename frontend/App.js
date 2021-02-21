@@ -1,15 +1,12 @@
 import React from 'react';
 import 'react-native-gesture-handler';
-import {NavigationContainer} from '@react-navigation/native';
+import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
-import HomeScreen from './src/screens/HomeScreen';
-import CreateAccountScreen from './src/screens/CreateAccountScreen';
 
 import SplashScreen from './src/screens/SplashScreen';
-import LoginScreen from './src/screens/LoginScreen';
-import RegisterScreen from './src/screens/RegisterScreen';
-import DrawerNavigationRoutes from './src/components/Nav/DrawerNavigationRoutes';
+import TabNavigationRoutes from './src/components/Nav/TabNavigationRoutes';
 import Auth from './src/components/Nav/Auth';
+import DrawerNavigatorRoutes from './src/components/Nav/DrawerNavigationRoutes';
 
 const Stack = createStackNavigator();
 
@@ -32,8 +29,8 @@ const App = () => {
         />
         {/* Navigation Drawer as a landing page */}
         <Stack.Screen
-          name="DrawerNavigationRoutes"
-          component={DrawerNavigationRoutes}
+          name="TabNavigationRoutes"
+          component={DrawerNavigatorRoutes}
           // Hiding header for Navigation Drawer
           options={{headerShown: false}}
         />

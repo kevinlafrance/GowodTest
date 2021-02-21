@@ -13,9 +13,9 @@ router.get('/', userController.list);
 router.get('/:id', userController.getById);
 
 /*
- * GET
+ * POST
  */
-router.get('/:email', userController.getByEmail);
+router.post('/login', userController.getByEmail);
 
 
 /*

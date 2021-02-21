@@ -2,12 +2,8 @@ const express = require("express");
 const dbConfig = require("./db.config");
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
-
+const user = require('./routes/userRoutes');
 const app = express();
-
-var corsOptions = {
-  origin: "http://localhost:3000"
-};
 
 mongoose
   .connect(`mongodb://${dbConfig.HOST}:${dbConfig.PORT}/${dbConfig.DB}`, {
@@ -23,7 +19,7 @@ mongoose
   });
 
  //var routes = require('./routes/index');
-var user = require('./routes/userRoutes');
+
 
 app.use(bodyParser.json()); // support json encoded bodies
 app.use(bodyParser.urlencoded({ extended: true }));

@@ -1,4 +1,5 @@
 import React, {useState, createRef} from 'react';
+import axios from 'axios';
 import styled from 'styled-components';
 import {
   StyleSheet,
@@ -104,46 +105,40 @@ const LoginScreen = ({navigation}) => {
       alert('Please fill Password');
       return;
     }
-    setLoading(true);
-    let userInfo = {email: userEmail, password: userPassword};
-    let formBody = [];
-    for (let key in userInfo) {
-      let encodedKey = encodeURIComponent(key);
-      let encodedValue = encodeURIComponent(userInfo[key]);
-      formBody.push(encodedKey + '=' + encodedValue);
+    const body = {
+      email: userEmail,
+      password: userPassword
     }
-    formBody = formBody.join('&');
+    JSON.stringify(body);
 
-    fetch('http://localhost:3000/api/user/login', {
-      method: 'POST',
-      body: formBody,
-      headers: {
-        //Header Defination
-        'Content-Type':
-        'application/x-www-form-urlencoded;charset=UTF-8',
-      },
-    }) 
-    .then((response) => response.json())
-    .then((responseJson) => {
-      //Hide Loader
-      setLoading(false);
-      console.log(responseJson);
+     // setLoading(true);
+    axios.post("http://localhost:3000/user/login", body)
+      .then((response) => {
+      // Hide Loader
+       // setLoading(false);
       // If server response message same as Data Matched
-      if (responseJson.status === 'success') {
-        AsyncStorage.setItem('user_id', responseJson.data.email);
-        console.log(responseJson.data.email);
-        navigation.replace('DrawerNavigationRoutes');
-      } else {
-        setErrorText(responseJson.msg);
-        console.log('Please check your email id or password');
-      }
+       if (response.status === 201 ) {
+       const userInfo = {
+          email: response.data.email,
+          firstname: response.data.firstname,
+          lastname: response.data.lastname,
+          age: response.data.age,
+          id: response.data._id
+        }
+         AsyncStorage.setItem('@storage_key', response.data.id);
+
+         navigation.replace('TabNavigationRoutes');
+       } else {
+         setErrorText(response.data.message);
+         console.log('Please check your email id or password');
+       }
     })
     .catch((error) => {
       //Hide Loader
-      setLoading(false);
+     // setLoading(false);
       console.error(error);
     });
-};
+ };
 
 
   return (

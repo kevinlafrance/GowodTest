@@ -1,7 +1,15 @@
 import React from 'react';
 import {View, Text, SafeAreaView} from 'react-native';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+
 
 const HomeScreen = () => {
+
+  const value = AsyncStorage.getItem('@storage_Key')
+  if(value !== null) {
+    console.log(value)
+  }
+
   return (
     <SafeAreaView style={{flex: 1}}>
       <View style={{flex: 1, padding: 16}}>

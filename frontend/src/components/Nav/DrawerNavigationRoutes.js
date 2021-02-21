@@ -5,6 +5,7 @@ import {createDrawerNavigator} from '@react-navigation/drawer';
 import HomeScreen from '../../screens/HomeScreen';
 import SettingsScreen from '../../screens/SettingScreen';
 import SidebarMenu from '../SideBarMenu/SideBarMenu';
+import NavigationDrawerHeader from '../NavigationDrawerHeader/NavigationDrawerHeader';
 
 const Stack = createStackNavigator();
 const Drawer = createDrawerNavigator();

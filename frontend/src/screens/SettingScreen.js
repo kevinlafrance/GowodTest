@@ -1,7 +1,15 @@
 import React from 'react';
 import {View, Text, SafeAreaView} from 'react-native';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
-const SettingsScreen = () => {
+
+const SettingsScreen = ({userInfo}) => {
+
+
+  const client = AsyncStorage.getItem('user_id');
+  console.log(client);
+  console.log(userInfo)
+
   return (
     <SafeAreaView style={{flex: 1}}>
       <View style={{flex: 1, padding: 16}}>

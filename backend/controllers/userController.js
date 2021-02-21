@@ -50,25 +50,21 @@ module.exports = {
     /**
      * userController.show()
      */
-    getByEmail: function (req, res) {
-        var email = req.params.email;
+    getByEmail: async function (req, res) {
+        const email = req.body.email;
+        const password = req.body.password;
 
-        UserModel.findOne({email: email}, function (err, user) {
-            if (err) {
-                return res.status(500).json({
-                    message: 'Error when getting user.',
-                    error: err
-                });
-            }
+         const candidate = await UserModel.findOne({
+                email: email,
+                password: password
+        }) 
+         if (candidate) {
+             return res.status(201).json(candidate);  
+         } 
+         return res.json({ message: "Mot de passe ou Email faux"})
+         
 
-            if (!user) {
-                return res.status(404).json({
-                    message: 'No such user'
-                });
-            }
-
-            return res.json(user);
-        });
+        
     },
 
     /**
