@@ -24,7 +24,7 @@ const Auth = () => {
           options={{
             title: "S'inscrire", //Title de la nav page inscription
             headerStyle: {
-              backgroundColor: '#845ded', // couleur de fond
+              backgroundColor: '#133353', // couleur de fond
             },
             headerTintColor: '#fff', // couleur de text
             headerTitleStyle: {

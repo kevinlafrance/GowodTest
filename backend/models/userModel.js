@@ -5,7 +5,7 @@ var userSchema = new Schema([{
 	'id': { type:String, required:true, unique:true, index:true, default:mongoose.Types.ObjectId },
 	'firstname' : String,
 	'lastname' : String,
-	'age' : Number,
+	'age' : String,
 	'email' : String,
 	'password' : String
 }]);

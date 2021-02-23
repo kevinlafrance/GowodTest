@@ -26,25 +26,16 @@ module.exports = {
     /**
      * userController.show()
      */
-    getById: function (req, res) {
-        var id = req.params.id;
+    getById: async function (req, res) {
+        const id = req.body.id
 
-        UserModel.findOne({_id: id}, function (err, user) {
-            if (err) {
-                return res.status(500).json({
-                    message: 'Error when getting user.',
-                    error: err
-                });
-            }
-
-            if (!user) {
-                return res.status(404).json({
-                    message: 'No such user'
-                });
-            }
-
-            return res.json(user);
-        });
+        const candidate = await UserModel.findOne({
+            id: id
+        }) 
+            if (candidate) {
+            return res.status(200).json(candidate);  
+            } 
+            return res.json({ message: "Problème de récupération d'utilisateur"})
     },
 
     /**
@@ -108,7 +99,7 @@ module.exports = {
     update: function (req, res) {
         var id = req.params.id;
 
-        UserModel.findOne({_id: id}, function (err, user) {
+        UserModel.findOne({id: id}, function (err, user) {
             if (err) {
                 return res.status(500).json({
                     message: 'Error when getting user',

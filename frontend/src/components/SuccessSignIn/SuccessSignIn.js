@@ -3,12 +3,12 @@ import styled from 'styled-components';
 
 const Container = styled.View`
     flex: 1;
-    background-color: #307ecc;
+    background-color: #133353;
     justify-content: center;
 `;
 
 const SuccessImage = styled.Image`
-    height: 150, 
+    height: 150px, 
     resize-mode: contain;
     align-self: center;
 `;
@@ -31,11 +31,11 @@ const Button = styled.TouchableOpacity`
 
 const ButtonText = styled.Text`
     color: #FFFFFF;
-    padding: 10;
+    padding: 10px;
     font-size: 18px;
 `;
 
-const SuccessSignIn = () => {
+const SuccessSignIn = (props) => {
 
 
     return (

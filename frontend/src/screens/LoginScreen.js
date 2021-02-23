@@ -16,8 +16,6 @@ import Loader from '../components/Loader/Loader';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 
-
-
 const MainView = styled.View`
   flex: 1;
   justify-content: center;
@@ -93,16 +91,17 @@ const LoginScreen = ({navigation}) => {
   const [loading, setLoading] = useState(false);
   const [errorText, setErrorText] = useState('');
 
+
   const passwordInputRef = createRef();
 
   const handleSubmitPress = () => {
     setErrorText('');
     if (!userEmail) {
-      alert('Please fill Email');
+      alert('Il manque votre Email');
       return;
     }
     if (!userPassword) {
-      alert('Please fill Password');
+      alert('Il manque votre mot de passe');
       return;
     }
     const body = {
@@ -111,11 +110,11 @@ const LoginScreen = ({navigation}) => {
     }
     JSON.stringify(body);
 
-     // setLoading(true);
+    setLoading(true);
     axios.post("http://localhost:3000/user/login", body)
       .then((response) => {
       // Hide Loader
-       // setLoading(false);
+       setLoading(false);
       // If server response message same as Data Matched
        if (response.status === 201 ) {
        const userInfo = {
@@ -123,11 +122,12 @@ const LoginScreen = ({navigation}) => {
           firstname: response.data.firstname,
           lastname: response.data.lastname,
           age: response.data.age,
-          id: response.data._id
+          id: response.data.id
         }
-         AsyncStorage.setItem('@storage_key', response.data.id);
+         AsyncStorage.setItem('user_id', response.data.id);
 
-         navigation.replace('TabNavigationRoutes');
+         navigation.push('DrawerNavigationRoutes', { params: response.data.id});
+
        } else {
          setErrorText(response.data.message);
          console.log('Please check your email id or password');
@@ -135,7 +135,7 @@ const LoginScreen = ({navigation}) => {
     })
     .catch((error) => {
       //Hide Loader
-     // setLoading(false);
+     setLoading(false);
       console.error(error);
     });
  };

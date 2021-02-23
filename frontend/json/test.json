@@ -1,0 +1,234 @@
+ [
+  {
+    "archetype": "shoulders",
+    "name": "The compass",
+    "response": [
+      {
+        "points": 0,
+        "title": "15°"
+      },
+      {
+        "points": 0.5,
+        "title": "30°"
+      },
+      {
+        "points": 0.75,
+        "title": "60°"
+      },
+      {
+        "points": 1,
+        "title": "Fingers touching"
+      },
+      {
+        "points": 1.5,
+        "title": "Hand flat on the ground"
+      }
+    ]
+  },
+  {
+    "archetype": "shoulders",
+    "name": "The freeze test",
+    "response": [
+      {
+        "points": 0,
+        "title": "15°"
+      },
+      {
+        "points": 0.5,
+        "title": "45°"
+      },
+      {
+        "points": 0.75,
+        "title": "60°"
+      },
+      {
+        "points": 1,
+        "title": "Fingers touching"
+      },
+      {
+        "points": 1.5,
+        "title": "Hand and wrist touch the wall"
+      }
+    ]
+  },
+  {
+    "archetype": "overhead",
+    "name": "The wizard",
+    "response": [
+      {
+        "points": 0,
+        "title": "15°"
+      },
+      {
+        "points": 0.5,
+        "title": "45"
+      },
+      {
+        "points": 0.75,
+        "title": "60"
+      },
+      {
+        "points": 1,
+        "title": "Fingers touching"
+      },
+      {
+        "points": 2,
+        "title": "Hand and wrist touch the wall"
+      }
+    ]
+  },
+  {
+    "archetype": "overhead",
+    "name": "The wall squat",
+    "response": [
+      {
+        "points": 0,
+        "title": "Feet at 15cm (~6in) or +"
+      },
+      {
+        "points": 1,
+        "title": "Feet at 10cm (~4in)"
+      },
+      {
+        "points": 2,
+        "title": "Feet at 5cm (~2in)"
+      },
+      {
+        "points": 3,
+        "title": "Feet touch the wall"
+      }
+    ]
+  },
+  {
+    "archetype": "hips",
+    "name": "The lotus",
+    "response": [
+      {
+        "points": 0,
+        "title": "Position 1 or impossible"
+      },
+      {
+        "points": 0.5,
+        "title": "Position 2"
+      },
+      {
+        "points": 1,
+        "title": "Position 3"
+      },
+      {
+        "points": 2,
+        "title": "Position 4"
+      }
+    ]
+  },
+  {
+    "archetype": "hips",
+    "name": "The shield",
+    "response": [
+      {
+        "points": 0,
+        "title": "0"
+      },
+      {
+        "points": 0.5,
+        "title": "15"
+      },
+      {
+        "points": 1,
+        "title": "30"
+      },
+      {
+        "points": 2,
+        "title": "Thigh touching the torso"
+      }
+    ]
+  },
+  {
+    "archetype": "hips",
+    "name": "The sweeper",
+    "response": [
+      {
+        "points": 0,
+        "title": "No movement"
+      },
+      {
+        "points": 0.5,
+        "title": "15"
+      },
+      {
+        "points": 1,
+        "title": "30° or more"
+      }
+    ]
+  },
+  {
+    "archetype": "postchain",
+    "name": "Standing forward bend",
+    "responses": [
+      {
+        "points": 0,
+        "title": "Fingers at the shins"
+      },
+      {
+        "points": 0.5,
+        "title": "Fingers at the ankles"
+      },
+      {
+        "points": 1,
+        "title": "Fingers touch the ground"
+      },
+      {
+        "points": 1.5,
+        "title": "Back of fingers on the ground"
+      },
+      {
+        "points": 2,
+        "title": "Hand palm on the ground"
+      }
+    ]
+  },
+  {
+    "archetype": "postchain",
+    "name": "The diver",
+    "responses": [
+      {
+        "points": 0,
+        "title": "Fingers above the knee"
+      },
+      {
+        "points": 1,
+        "title": "Fingers under the knee"
+      },
+      {
+        "points": 2,
+        "title": "Fingers at the shins"
+      },
+      {
+        "points": 3,
+        "title": "Fingers at the ankles"
+      },
+      {
+        "points": 4,
+        "title": "Fingers touch the ground"
+      }
+    ]
+  },
+  {
+    "archetype": "ankles",
+    "name": "Knee to wall",
+    "responses": [
+      {
+        "points": 0,
+        "title": "Feet against the wall"
+      },
+      {
+        "points": 0.5,
+        "title": "Feet at 5cm (~2in)"
+      },
+      {
+        "points": 1,
+        "title": "Feet at 10cm (~4in)"
+      }
+    ]
+  }
+]

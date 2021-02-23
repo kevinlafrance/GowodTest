@@ -10,7 +10,7 @@ router.get('/', userController.list);
 /*
  * GET
  */
-router.get('/:id', userController.getById);
+router.post('/getById', userController.getById);
 
 /*
  * POST

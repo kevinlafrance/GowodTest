@@ -1,3 +1,4 @@
+import axios from 'axios';
 import React, {useState, createRef} from 'react';
 import {
     StyleSheet,
@@ -91,7 +92,7 @@ const RegisterScreen = (props) => {
     const [userPassword, setUserPassword] = useState('');
     const [loading, setLoading] = useState('');
     const [errorText, setErrorText] = useState('');
-    const [isSignInSuccess, SetIsSignInSuccess] = useState(false);
+    const [isSignInSuccess, setIsSignInSuccess] = useState(false);
     const lastNameInputRef = createRef();
     const emailInputRef = createRef();
     const ageInputRef = createRef();
@@ -122,38 +123,23 @@ const RegisterScreen = (props) => {
         setLoading(true);
         const userInfo = {
             firstname: userFirstName,
-            lastName: userLastName,
+            lastname: userLastName,
             email: userEmail,
             age: userAge,
             password: userPassword,
         };
-        console.log(userInfo);
-        const formSignIn = [];
-        for (var key in userInfo) {
-            var encodedKey = encodeURIComponent(key);
-            var encodedValue = encodeURIComponent(userInfo[key]);
-            formSignIn.push(encodedKey + '=' + encodedValue);
-          }
-          body = formSignIn.join('&');
-          fetch('http://localhost:3000/api/user/signin', {
-            method: 'POST',
-            body: formSignIn,
-            headers: {
-              'Content-Type':
-              'application/x-www-form-urlencoded;charset=UTF-8',
-            },
-          }) 
-          .then((response) => response.json())
-          .then((responseJson) => {
-            setLoading(false);
-            console.log(responseJson);
-            if (responseJson.status === 'success') {
-              setIsSignInSuccess(true);
+          JSON.stringify(userInfo);
+          axios.post('http://localhost:3000/user/create', userInfo)
+          .then((response) => {
+           setLoading(false);
+           console.log(response);
+          if (response.status === 201) {
+            setIsSignInSuccess(true);
               console.log(
                 'Vous êtes prêt à utiliser notre application, veuillez vous authentifiez'
               );
             } else {
-              setErrorText(responseJson.msg);
+              setErrorText(response.data.message);
             }
           })
           .catch((error) => {
@@ -162,9 +148,11 @@ const RegisterScreen = (props) => {
             console.error(error);
           });
       };
+            
+            
       if (isSignInSuccess) {
         return (
-            <SuccessSignIn />
+            <SuccessSignIn {...props} />
         );
       }
     

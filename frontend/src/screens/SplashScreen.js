@@ -38,7 +38,7 @@ const SplashScreen = ({navigation}) => {
             //else send to Home Screen
             AsyncStorage.getItem('user_id').then((value) =>
                 navigation.replace(
-                value === null ? 'Auth' : 'TabNavigationRoutes'
+                value === null ? 'Auth' : 'DrawerNavigationRoutes'
                 ),
             );
         }, 5000);
